@@ -1,6 +1,8 @@
+//Add my modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {RouterModule} from '@angular/router';
 
 // Add my form
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,13 +26,14 @@ import {
   MatProgressSpinnerModule,
   MatPaginatorModule
 } from '@angular/material';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCreateComponent, // My Component
     HeaderComponent, // My header component
-    PostListComponent // My Post List Component
+    PostListComponent, MainComponent // My Post List Component
   ],
   imports: [
     BrowserModule,
