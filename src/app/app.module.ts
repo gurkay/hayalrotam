@@ -1,55 +1,36 @@
-//Add my modules
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {RouterModule} from '@angular/router';
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
-// Add my form
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-
-// Add my components
-import { PostCreateComponent } from './posts/post-create/post-create.component';
-import { HeaderComponent } from './header/header.component';
-import { PostListComponent } from './posts/post-list/post-list.component';
-import { AppComponent } from './app.component';
-
-// After setup angular matrial component
-// Information https://material.angular.io/ all module feutures
-import {
-  MatInputModule,
-  MatCardModule,
-  MatButtonModule,
-  MatToolbarModule,
-  MatExpansionModule,
-  MatProgressSpinnerModule,
-  MatPaginatorModule
-} from '@angular/material';
-import { MainComponent } from './main/main.component';
+import { AppComponent } from "./app.component";
+import { HeaderComponent } from "./header/header.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { AuthInterceptor } from "./auth/auth-interceptor";
+import { ErrorInterceptor } from "./error-interceptor";
+import { ErrorComponent } from "./error/error.component";
+import { AngularMaterialModule } from "./angular-material.module";
+import { PostsModule } from "./posts/posts.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostCreateComponent, // My Component
-    HeaderComponent, // My header component
-    PostListComponent, MainComponent // My Post List Component
+    HeaderComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, // import my module of Routes
-    ReactiveFormsModule, // import my module of forms
-    BrowserAnimationsModule, // import my module of forms
-    MatInputModule, // import angular material MatInputModule of Modules
-    MatCardModule, // import angular material MatCardModule of Modules
-    MatButtonModule, // import angular material MatButtonModule of Modules
-    MatToolbarModule, // import angular material MatToolbarModule of Modules
-    MatExpansionModule, // import angular material MatExpansionModule of Modules
-    HttpClientModule, // import angular material HttpClientModule of Modules
-    MatProgressSpinnerModule, // import angular material spinner of Modules
-    MatPaginatorModule // import angular material paginator of Modules
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AngularMaterialModule,
+    PostsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
-export class AppModule { }
+export class AppModule {}
