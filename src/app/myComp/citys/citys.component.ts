@@ -1,12 +1,23 @@
-import { Component } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 
 import { MyCompService } from '../myComp.service';
 
 @Component({
-    selector: 'citys-component',
+    selector: 'app-citys-component',
     templateUrl: './citys.component.html',
     styleUrls: ['./citys.component.css']
 })
-export class SelectCity {
+export class CityComponent implements OnInit, OnDestroy {
 
+    ngOnInit() {
+
+    }
+
+    onLogout() {
+
+    }
+
+    ngOnDestroy() {
+
+    }
 }
