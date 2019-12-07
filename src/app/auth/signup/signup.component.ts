@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { NgForm, FormControl } from "@angular/forms";
 import { Subscription } from "rxjs";
 
 import { AuthService } from "../auth.service";
@@ -14,6 +14,12 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   constructor(public authService: AuthService) {}
 
+  /***********************************************
+   * Set Current date
+   ***********************************************/
+  planModel: any = {start_time: new Date() };
+  /************************************************/
+
   ngOnInit() {
     this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
       authStatus => {
@@ -27,7 +33,15 @@ export class SignupComponent implements OnInit, OnDestroy {
       return;
     }
     this.isLoading = true;
-    this.authService.createUser(form.value.email, form.value.password);
+    this.authService.createUser(
+      form.value.email,
+      form.value.password,
+      form.value.name,
+      form.value.surname,
+      form.value.age,
+      form.value.gender,
+      form.value.city,
+      form.value.dateOfRecord);
   }
 
   ngOnDestroy() {

@@ -2,13 +2,60 @@
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
-      <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+      <input matInput name="email" type="email" ngModel placeholder="E-Mail" #emailInput="ngModel" required email>
       <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+      <input matInput name="password" type="password" ngModel placeholder="Password" #passwordInput="ngModel" required>
       <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
+    <mat-form-field>
+      <input matInput name="userName" placeholder="Name" ngModel #userNameInput="ngModel" required>
+      <mat-error *ngIf="userNameInput.invalid">Please enter a valid name.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput name="userSurname" placeholder="Surname" ngModel #userSurnameInput="ngModel" required>
+        <mat-error *ngIf="userSurnameInput.invalid">Please enter a valid surname.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput name="age" placeholder="Age" ngModel #ageInput="ngModel" type="number" min="10" max="100" required>
+        <mat-error *ngIf="ageInput.invalid">Please enter a valid age.</mat-error>
+    </mat-form-field>
+
+    <label id="gender-radio-group-label">Gender : </label>
+    <mat-radio-group name="gender" ngModel #genderInput="ngModel" required>
+        <mat-radio-button value="male"> Male</mat-radio-button>
+        <mat-radio-button value="female"> Female</mat-radio-button>
+        <mat-error *ngIf="genderInput.invalid">Please enter a valid gander.</mat-error>
+    </mat-radio-group>
+
+    <mat-form-field>
+        <mat-label>City</mat-label>
+        <select name="city" matNativeControl required>
+          <option value="Adana">Adana</option>
+          <option value="Adıyaman">Adıyaman</option>
+          <option value="Afyon">Afyon</option>
+          <option value="Ankara">Ankara</option>
+          <option value="Erzincan">Erzincan</option>
+          <option value="Erzurum">Erzurum</option>
+          <option value="Eskişehir">Eskişehir</option>
+        </select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput
+               name="dateOfRecord"
+               #dateOfRecordInput="ngModel"
+               [matDatepicker]="startDate"
+               [min]="minDate"
+               date="true"
+               [(ngModel)]="planModel.start_time"
+               placeholder="Choose a date">
+        <mat-datepicker-toggle mdSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker [startView]="dateStart" #startDate></mat-datepicker>
+    </mat-form-field>
+
     <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Signup</button>
   </form>
 </mat-card>
