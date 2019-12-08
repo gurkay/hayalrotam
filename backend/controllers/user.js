@@ -3,18 +3,21 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
 
+console.log('test:');
+
 exports.createUser = (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then(hash => {
     const user = new User({
       email: req.body.email,
       password: hash,
-      name: req.body.name,
-      surname: req.body.surname,
+      userName: req.body.userName,
+      userSurname: req.body.userSurname,
       age: req.body.age,
       gender: req.body.gender,
       city: req.body.city,
-      date: req.body.dateOfRecord 
+      dateOfRecord: req.body.dateOfRecord 
     });
+    
     user
       .save()
       .then(result => {

@@ -40,23 +40,35 @@ export class AuthService {
    * @param email
    * @param password
    */
-  createUser(email: string, password: string, name: string, surname: string, age: string, gender: string, city: string, date: string) {
-    const authDataRec: AuthDataRec = {
-      email: email,
-      password: password,
-      name: name,
-      surname: surname,
-      age: age,
-      gender: gender,
-      city: city,
-      date: date
-    };
-    this.http.post(BACKEND_URL + '/signup', authDataRec).subscribe(
+  createUser(
+    email: string,
+    password: string,
+    userName: string,
+    userSurname: string,
+    age: string,
+    gender: string,
+    city: string,
+    dateOfRecord: string) {
+      const authDataRec: AuthDataRec = {
+        email: email,
+        password: password,
+        userName: userName,
+        userSurname: userSurname,
+        age: age,
+        gender: gender,
+        city: city,
+        dateOfRecord: dateOfRecord
+      };
+
+    this.http
+      .post(BACKEND_URL + '/signup', authDataRec)
+      .subscribe(
       () => {
         /**
          * After register login be the user of register user
          * and router main page
          */
+        
         this.login(email, password);
       },
       error => {
@@ -71,10 +83,7 @@ export class AuthService {
       password: password
     };
     this.http
-      .post<{ token: string; expiresIn: number; userId: string }>(
-        BACKEND_URL + '/login',
-        authData
-      )
+      .post<{ token: string; expiresIn: number; userId: string }>(BACKEND_URL + '/login', authData)
       .subscribe(
         response => {
           const token = response.token;

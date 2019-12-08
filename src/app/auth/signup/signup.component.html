@@ -19,20 +19,22 @@
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput name="age" placeholder="Age" ngModel #ageInput="ngModel" type="number" min="10" max="100" required>
+        <input matInput name="age" placeholder="Age" ngModel #ageInput="ngModel" min="10" max="100" required>
         <mat-error *ngIf="ageInput.invalid">Please enter a valid age.</mat-error>
     </mat-form-field>
 
-    <label id="gender-radio-group-label">Gender : </label>
+
+    <mat-label>Gender : </mat-label>
     <mat-radio-group name="gender" ngModel #genderInput="ngModel" required>
         <mat-radio-button value="male"> Male</mat-radio-button>
         <mat-radio-button value="female"> Female</mat-radio-button>
         <mat-error *ngIf="genderInput.invalid">Please enter a valid gander.</mat-error>
     </mat-radio-group>
 
+
     <mat-form-field>
         <mat-label>City</mat-label>
-        <select name="city" matNativeControl required>
+        <select name="city" ngModel #cityInput="ngModel" matNativeControl required>
           <option value="Adana">Adana</option>
           <option value="Adıyaman">Adıyaman</option>
           <option value="Afyon">Afyon</option>
@@ -48,12 +50,11 @@
                name="dateOfRecord"
                #dateOfRecordInput="ngModel"
                [matDatepicker]="startDate"
-               [min]="minDate"
                date="true"
                [(ngModel)]="planModel.start_time"
                placeholder="Choose a date">
         <mat-datepicker-toggle mdSuffix [for]="startDate"></mat-datepicker-toggle>
-        <mat-datepicker [startView]="dateStart" #startDate></mat-datepicker>
+        <mat-datepicker #startDate></mat-datepicker>
     </mat-form-field>
 
     <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Signup</button>
