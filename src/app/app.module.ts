@@ -12,13 +12,15 @@ import { ErrorComponent } from "./error/error.component";
 import { AngularMaterialModule } from "./angular-material.module";
 import { PostsModule } from "./posts/posts.module";
 import { CityComponent } from "./myComp/citys/citys.component";
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CityComponent,
-    ErrorComponent
+    ErrorComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
