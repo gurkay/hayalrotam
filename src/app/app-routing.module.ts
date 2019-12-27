@@ -5,6 +5,7 @@ import { PostCreateComponent } from "./posts/post-create/post-create.component";
 import { AuthGuard } from "./auth/auth.guard";
 import { MainComponent} from "./main/main.component";
 
+
 const routes: Routes = [
   { path: "", component: MainComponent },
   { path: "posts", component: PostListComponent },

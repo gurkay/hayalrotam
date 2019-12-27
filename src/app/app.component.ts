@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   // hasError = false;
   // private errorSub: Subscription;
 
+  
+
   constructor(
     private authService: AuthService,
     // private errorService: ErrorService

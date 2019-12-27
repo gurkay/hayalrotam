@@ -91,6 +91,8 @@ THE SOFTWARE.
 
 @angular/material/core
 
+@angular/material/datepicker
+
 @angular/material/dialog
 
 @angular/material/expansion
@@ -100,6 +102,8 @@ THE SOFTWARE.
 @angular/material/paginator
 
 @angular/material/progress-spinner
+
+@angular/material/radio
 
 @angular/material/select
 

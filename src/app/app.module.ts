@@ -13,6 +13,7 @@ import { AngularMaterialModule } from "./angular-material.module";
 import { PostsModule } from "./posts/posts.module";
 import { CityComponent } from "./myComp/citys/citys.component";
 import { MainComponent } from './main/main.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,9 @@ import { MainComponent } from './main/main.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey : 'AIzaSyCpkIfB9SveNyzksbz7qHWjvneQiDdarBw' 
+    }),
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
